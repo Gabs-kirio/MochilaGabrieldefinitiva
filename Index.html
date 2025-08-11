@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Mochila Virtual</title>
+  <link rel="stylesheet" href="Styles.css"/>
+</head>
+<body>
+
+  <header>
+    <button id="theme-toggle" aria-label="Alternar temas">🎨 Temas</button>
+    <div id="theme-options" class="hidden" role="menu" aria-label="Opções de Tema">
+      <button data-theme="light">Claro</button>
+      <button data-theme="dark">Escuro</button>
+      <button data-theme="galaxy">Galaxy</button>
+      <button data-theme="cyber">Cyber</button>
+      <button data-theme="custom">Custom</button>
+    </div>
+  </header>
+
+  <nav aria-label="Matérias">
+    <ul class="subjects-list">
+      <li><button data-subject="subj1">AMC</button></li>
+      <li><button data-subject="subj2">NR</button></li>
+      <li><button data-subject="subj3">LOG PR</button></li>
+      <li><button data-subject="subj4">POO JAVA</button></li>
+      <li><button data-subject="subj5">PROG WEB</button></li>
+      <li><button data-subject="subj6">HTML E CSS</button></li>
+      <li><button data-subject="subj7">GT</button></li>
+      <li><button data-subject="subj8">SO</button></li>
+    </ul>
+  </nav>
+
+  <!-- Container de botões de conteúdo -->
+  <aside id="content-options" class="content-options hidden" aria-label="Conteúdos da Matéria">
+    <!-- Será preenchido via JS -->
+  </aside>
+
+  <!-- Modal de conteúdo completo -->
+  <div id="content-frame" class="content-frame hidden" role="dialog" aria-modal="true">
+    <div class="frame-inner">
+      <button id="close-frame" class="close-btn" aria-label="Fechar">×</button>
+      <div id="frame-content"></div>
+    </div>
+  </div>
+
+  <!-- Templates de conteúdo (invisíveis) -->
+  <div id="templates" class="hidden">
+    <!-- Matéria 1 -->
+    <div id="tpl-subj1-1">
+      <h2>Aula 1 - AMC – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+     <div id="tpl-subj1-2">
+      <h2>Aula 2 – Maneiro</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj1-3">
+      <h2>Aula 2 – Maneiro</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj1-4">
+      <h2>Aula 2 – Maneiro</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj1-5">
+      <h2>Aula 2 – Maneiro</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj1-6">
+      <h2>Aula 2 – Maneiro</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj1-7">
+      <h2>Aula 2 – Maneiro</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj1-8">
+      <h2>Aula 2 – Maneiro</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj2-1">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj2-2">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj2-3">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj2-4">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj2-5">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj2-6">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj2-7">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj2-8">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj3-1">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj3-2">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj3-3">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj3-4">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj3-5">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj3-6">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj3-7">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj3-8">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj4-1">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+     <div id="tpl-subj4-2">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+     <div id="tpl-subj4-3">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+     <div id="tpl-subj4-4">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+     <div id="tpl-subj4-5">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+     <div id="tpl-subj4-6">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+     <div id="tpl-subj4-7">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+     <div id="tpl-subj4-8">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+     <div id="tpl-subj5-1">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+     <div id="tpl-subj5-2">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+     <div id="tpl-subj5-3">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+     <div id="tpl-subj5-4">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+     <div id="tpl-subj5-5">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+     <div id="tpl-subj5-6">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+     <div id="tpl-subj5-7">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+     <div id="tpl-subj5-8">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+     <div id="tpl-subj6-1">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj6-2">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj6-3">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj6-4">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj6-5">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj6-6">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj6-7">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj6-8">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj7-1">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+     <div id="tpl-subj7-2">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+     <div id="tpl-subj7-3">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+     <div id="tpl-subj7-4">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+     <div id="tpl-subj7-5">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+     <div id="tpl-subj7-6">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+     <div id="tpl-subj7-7">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+     <div id="tpl-subj7-8">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+     <div id="tpl-subj8-1">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj8-2">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj8-3">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj8-4">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj8-5">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj8-6">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj8-7">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+    <div id="tpl-subj8-8">
+      <h2>Aula 1 – Conceitos Iniciais</h2>
+      <p>Texto e exemplos da aula 1...</p>
+    </div>
+  </div>
+
+  <aside id="custom-theme-settings" class="hidden" aria-label="Tema Custom">
+    <h3>Customizar Tema</h3>
+    <label>Fundo: <input type="color" id="custom-bg" value="#ffffff"/></label>
+    <label>Texto: <input type="color" id="custom-text" value="#000000"/></label>
+    <label>Destaque: <input type="color" id="custom-accent" value="#007bff"/></label>
+    <button id="save-custom">Salvar</button>
+  </aside>
+
+  <script src="scripts.js"></script>
+</body>
+</html>
